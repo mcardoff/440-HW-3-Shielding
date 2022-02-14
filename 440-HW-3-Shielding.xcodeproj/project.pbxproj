@@ -11,12 +11,14 @@
 		2CC34B7D27BB1374002B2B2C /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B7C27BB1374002B2B2C /* Tests_iOSLaunchTests.swift */; };
 		2CC34B8727BB1374002B2B2C /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B8627BB1374002B2B2C /* Tests_macOS.swift */; };
 		2CC34B8927BB1374002B2B2C /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B8827BB1374002B2B2C /* Tests_macOSLaunchTests.swift */; };
-		2CC34B8A27BB1374002B2B2C /* _40_HW_3_ShieldingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B6227BB1372002B2B2C /* _40_HW_3_ShieldingApp.swift */; };
-		2CC34B8B27BB1374002B2B2C /* _40_HW_3_ShieldingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B6227BB1372002B2B2C /* _40_HW_3_ShieldingApp.swift */; };
 		2CC34B8C27BB1374002B2B2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B6327BB1372002B2B2C /* ContentView.swift */; };
 		2CC34B8D27BB1374002B2B2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B6327BB1372002B2B2C /* ContentView.swift */; };
 		2CC34B8E27BB1374002B2B2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC34B6427BB1374002B2B2C /* Assets.xcassets */; };
 		2CC34B8F27BB1374002B2B2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC34B6427BB1374002B2B2C /* Assets.xcassets */; };
+		2CC34B9F27BB15E8002B2B2C /* Neutron Shielding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B9E27BB15E8002B2B2C /* Neutron Shielding.swift */; };
+		2CC34BA027BB15E8002B2B2C /* Neutron Shielding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34B9E27BB15E8002B2B2C /* Neutron Shielding.swift */; };
+		2CC34BA227BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34BA127BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift */; };
+		2CC34BA327BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34BA127BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2CC34B6227BB1372002B2B2C /* _40_HW_3_ShieldingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40_HW_3_ShieldingApp.swift; sourceTree = "<group>"; };
 		2CC34B6327BB1372002B2B2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2CC34B6427BB1374002B2B2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC34B6927BB1374002B2B2C /* 440 HW 3 Shielding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "440 HW 3 Shielding.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +50,8 @@
 		2CC34B8227BB1374002B2B2C /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC34B8627BB1374002B2B2C /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		2CC34B8827BB1374002B2B2C /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		2CC34B9E27BB15E8002B2B2C /* Neutron Shielding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Neutron Shielding.swift"; sourceTree = "<group>"; };
+		2CC34BA127BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 440_HW_3_ShieldingApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +100,8 @@
 		2CC34B6127BB1372002B2B2C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				2CC34B6227BB1372002B2B2C /* _40_HW_3_ShieldingApp.swift */,
+				2CC34BA127BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift */,
+				2CC34B9E27BB15E8002B2B2C /* Neutron Shielding.swift */,
 				2CC34B6327BB1372002B2B2C /* ContentView.swift */,
 				2CC34B6427BB1374002B2B2C /* Assets.xcassets */,
 			);
@@ -240,7 +244,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CC34B6027BB1371002B2B2C /* Build configuration list for PBXProject "440 HW 3 Shielding" */;
+			buildConfigurationList = 2CC34B6027BB1371002B2B2C /* Build configuration list for PBXProject "440-HW-3-Shielding" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -299,8 +303,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC34B9F27BB15E8002B2B2C /* Neutron Shielding.swift in Sources */,
+				2CC34BA227BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift in Sources */,
 				2CC34B8C27BB1374002B2B2C /* ContentView.swift in Sources */,
-				2CC34B8A27BB1374002B2B2C /* _40_HW_3_ShieldingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC34BA027BB15E8002B2B2C /* Neutron Shielding.swift in Sources */,
+				2CC34BA327BB160E002B2B2C /* 440_HW_3_ShieldingApp.swift in Sources */,
 				2CC34B8D27BB1374002B2B2C /* ContentView.swift in Sources */,
-				2CC34B8B27BB1374002B2B2C /* _40_HW_3_ShieldingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,7 +663,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CC34B6027BB1371002B2B2C /* Build configuration list for PBXProject "440 HW 3 Shielding" */ = {
+		2CC34B6027BB1371002B2B2C /* Build configuration list for PBXProject "440-HW-3-Shielding" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CC34B9027BB1374002B2B2C /* Debug */,
