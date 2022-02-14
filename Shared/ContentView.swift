@@ -22,11 +22,14 @@ struct ContentView: View {
     }
     
     func calculate() {
-        var points = randomWalk.oneParticleRandomWalk(meanFP: 1.0, eLoss: 1.0, eMax: 5.1)
-        for pt in points {
-            print(String(format: "%f, %f\n",pt.x,pt.y))
+        let walks = randomWalk.nParticleRandomWalk(meanFP: 3.0, eLoss: 1.0, eMax: 5.1, n: 10)
+        print(String(format: "Num Escaped: %d\n", walks.escapedCount))
+        for walk in walks.paths {
+            for pt in walk {
+                print(String(format: "%f, %f\n",pt.x,pt.y))
+            }
+            print("------------------------\n")
         }
-        print("------------------------\n")
     }
 }
 
