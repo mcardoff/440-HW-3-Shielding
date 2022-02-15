@@ -10,23 +10,36 @@ import SwiftUI
 struct ContentView: View {
     
     @State var randomWalk = RandomWalk()
+    @State var escaped : String = "0"
     
     var body: some View {
-        VStack {
-            Button("Calc Walks", action: self.calculate)
-                .padding()
-                .frame(width: 200.0)
-                .disabled(randomWalk.enableButton == false)
-            
-            HStack {
-                // Drawing
-//                if(randomWalk.hasBeenCalled) {
-                    RandomWalkView(walkPts: $randomWalk.walks)
+        HStack {
+            VStack {
+                Button("Calc Walks", action: self.calculate)
                     .padding()
-                    .aspectRatio(1, contentMode: .fit)
-                    .drawingGroup()
-//                }
+                    .frame(width: 200.0)
+                    .disabled(randomWalk.enableButton == false)
+                
+                Button("Clear", action: self.clear)
+                    .padding()
+                    .frame(width: 200.0)
+                
+                VStack {
+                    Text("Number Escaped")
+                    TextField("Get Beyond the Box", text: $escaped)
+                        .padding()
+                        .frame(width: 100.0)
+                        .disabled(randomWalk.enableButton == false)
+                }
             }
+            
+            // Drawing
+            //                if(randomWalk.hasBeenCalled) {
+            RandomWalkView(walkPts: $randomWalk.walks)
+                .padding()
+                .aspectRatio(1, contentMode: .fit)
+                .drawingGroup()
+            //                }
         }
     }
     
@@ -34,17 +47,21 @@ struct ContentView: View {
         
         randomWalk.setButtonEnable(state: false)
         self.randomWalk.objectWillChange.send()
-        let _ = randomWalk.nParticleRandomWalk(meanFP: 20.0, eLoss: 1.0, eMax: 10.0, n: 1)
-//        print(String(format: "Num Escaped: %d\n", walks.escapedCount))
-//        for walk in walks.paths {
-//            for pt in walk {
-//                print(String(format: "%f, %f\n",pt.x,pt.y))
-//            }
-//            print("------------------------\n")
-//        }
+        let rw = randomWalk.nParticleRandomWalk(meanFP: 100.0, eLoss: 1.0, eMax: 10.0, n: 10)
+        escaped = String(rw.escapedCount)
+        print(String(format: "Num Escaped: %d\n", rw.escapedCount))
+        //        for walk in walks.paths {
+        //            for pt in walk {
+        //                print(String(format: "%f, %f\n",pt.x,pt.y))
+        //            }
+        //            print("------------------------\n")
+        //        }
         randomWalk.setButtonEnable(state: true)
     }
     
+    func clear() {
+        randomWalk.eraseData()
+    }
     
 }
 

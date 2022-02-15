@@ -40,7 +40,7 @@ class RandomWalk : NSObject, ObservableObject {
 
     func oneParticleRandomWalk(meanFP: Double, eLoss: Double, eMax: Double) ->
     RandomWalkInfo {
-        let LHW = 0.0, RHW = 100.0, UPW = 100.0, BTW = 0.0
+        let LHW = 0.0, RHW = 600.0, UPW = 600.0, BTW = 0.0
         
         var escaped : Bool = false
         var energy = eMax - eLoss
@@ -82,6 +82,10 @@ class RandomWalk : NSObject, ObservableObject {
                 }
             }
         }
+    }
+    
+    func eraseData() {
+        walks.removeAll()
     }
 
 }
