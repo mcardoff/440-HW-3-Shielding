@@ -13,16 +13,20 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Hello, world!")
+            Button("Do Stuff", action: self.calculate)
                 .padding()
             
-            Button("Do Stuff", action: self.calculate)
-            
+            HStack {
+                // Drawing
+//                if(randomWalk.hasBeenCalled) {
+                    RandomWalkView(walkPts: $randomWalk.walks.paths[0])
+                }
+//            }
         }
     }
     
     func calculate() {
-        let walks = randomWalk.nParticleRandomWalk(meanFP: 3.0, eLoss: 1.0, eMax: 5.1, n: 10)
+        let walks = randomWalk.nParticleRandomWalk(meanFP: 1.0, eLoss: 1.0, eMax: 10.0, n: 10)
         print(String(format: "Num Escaped: %d\n", walks.escapedCount))
         for walk in walks.paths {
             for pt in walk {
@@ -30,7 +34,9 @@ struct ContentView: View {
             }
             print("------------------------\n")
         }
+        self.randomWalk.objectWillChange.send()
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

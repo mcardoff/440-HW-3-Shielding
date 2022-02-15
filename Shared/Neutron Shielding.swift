@@ -13,6 +13,9 @@ typealias MultiRandomWalkInfo = (paths: [CoordTupleList], escapedCount: Int)
 
 class RandomWalk : NSObject, ObservableObject {
     
+    @Published var walks : MultiRandomWalkInfo = (paths: [[(x: 300.0, y:300.0),(x: 150.0,y: 150.0)]], escapedCount: 0)
+    @Published var hasBeenCalled = false
+    
     func nParticleRandomWalk(meanFP: Double, eLoss: Double, eMax: Double, n: Int) -> MultiRandomWalkInfo {
         // do oneParticleRandomWalk(mfp, eLoss, eMax) n times
         var escapedCounter : Int = 0
@@ -26,7 +29,10 @@ class RandomWalk : NSObject, ObservableObject {
             pathList.append(currentWalk.path)
         }
         
-        return (paths: pathList, escapedCount: escapedCounter)
+        let ret = (paths: pathList, escapedCount: escapedCounter)
+        self.walks = ret
+        hasBeenCalled = true
+        return ret
     }
 
     func oneParticleRandomWalk(meanFP: Double, eLoss: Double, eMax: Double) ->
