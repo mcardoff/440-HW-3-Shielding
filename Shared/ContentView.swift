@@ -13,29 +13,38 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Button("Do Stuff", action: self.calculate)
+            Button("Calc Walks", action: self.calculate)
                 .padding()
+                .frame(width: 100.0)
+                .disabled(randomWalk.enableButton == false)
             
             HStack {
                 // Drawing
 //                if(randomWalk.hasBeenCalled) {
-                    RandomWalkView(walkPts: $randomWalk.walks.paths[0])
-                }
-//            }
+                    RandomWalkView(walkPts: $randomWalk.walks)
+                    .padding()
+                    .aspectRatio(1, contentMode: .fit)
+                    .drawingGroup()
+//                }
+            }
         }
     }
     
     func calculate() {
-        let walks = randomWalk.nParticleRandomWalk(meanFP: 1.0, eLoss: 1.0, eMax: 10.0, n: 10)
-        print(String(format: "Num Escaped: %d\n", walks.escapedCount))
-        for walk in walks.paths {
-            for pt in walk {
-                print(String(format: "%f, %f\n",pt.x,pt.y))
-            }
-            print("------------------------\n")
-        }
+        
+        randomWalk.setButtonEnable(state: false)
         self.randomWalk.objectWillChange.send()
+        let _ = randomWalk.nParticleRandomWalk(meanFP: 20.0, eLoss: 1.0, eMax: 10.0, n: 1)
+//        print(String(format: "Num Escaped: %d\n", walks.escapedCount))
+//        for walk in walks.paths {
+//            for pt in walk {
+//                print(String(format: "%f, %f\n",pt.x,pt.y))
+//            }
+//            print("------------------------\n")
+//        }
+        randomWalk.setButtonEnable(state: true)
     }
+    
     
 }
 

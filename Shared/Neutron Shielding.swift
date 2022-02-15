@@ -13,8 +13,10 @@ typealias MultiRandomWalkInfo = (paths: [CoordTupleList], escapedCount: Int)
 
 class RandomWalk : NSObject, ObservableObject {
     
-    @Published var walks : MultiRandomWalkInfo = (paths: [[(x: 300.0, y:300.0),(x: 150.0,y: 150.0)]], escapedCount: 0)
-    @Published var hasBeenCalled = false
+    //@Published var walks : MultiRandomWalkInfo = (paths: [[(x: 300.0, y:300.0),(x: 150.0,y: 150.0)]], escapedCount: 0)
+    @Published var walks : [CoordTupleList] = []
+    @Published var escapedCount = 0
+    @Published var enableButton = true
     
     func nParticleRandomWalk(meanFP: Double, eLoss: Double, eMax: Double, n: Int) -> MultiRandomWalkInfo {
         // do oneParticleRandomWalk(mfp, eLoss, eMax) n times
@@ -30,23 +32,23 @@ class RandomWalk : NSObject, ObservableObject {
         }
         
         let ret = (paths: pathList, escapedCount: escapedCounter)
-        self.walks = ret
-        hasBeenCalled = true
+        self.walks = pathList
+        self.escapedCount = escapedCounter
         return ret
     }
 
     func oneParticleRandomWalk(meanFP: Double, eLoss: Double, eMax: Double) ->
     RandomWalkInfo {
-        let LHW = 0.0, RHW = 10.0, UPW = 10.0, BTW = 0.0
+        let LHW = 0.0, RHW = 100.0, UPW = 100.0, BTW = 0.0
         
         var escaped : Bool = false
-        var points : CoordTupleList = []
         var energy = eMax - eLoss
-        var xCur = 0.1, yCur = 5.0
+        var xCur = 0.0, yCur = UPW/2.0
+        var points : CoordTupleList = [(x:xCur, y:yCur)] // always needs to be at least one point
         
         // Single particle loop
         while (energy > 0.0) {
-            let angle = Double.random(in: 0...Double.pi)
+            let angle = Double.random(in: 0*Double.pi...0.5*Double.pi) // always move forward in x and y
             // Move forward a total distance of 1 mfp
             xCur += meanFP * cos(angle)
             yCur += meanFP * sin(angle)
@@ -63,6 +65,22 @@ class RandomWalk : NSObject, ObservableObject {
         }
         
         return (path: points, escaped: escaped)
+    }
+    
+    func setButtonEnable(state: Bool) {
+        if state {
+            Task.init {
+                await MainActor.run {
+                    self.enableButton = true
+                }
+            }
+        } else {
+            Task.init {
+                await MainActor.run {
+                    self.enableButton = false
+                }
+            }
+        }
     }
 
 }

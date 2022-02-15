@@ -10,12 +10,12 @@ import SwiftUI
 
 struct RandomWalkView: View {
     
-    @Binding var walkPts : CoordTupleList
-    
+    @Binding var walkPts : [CoordTupleList]
+
     var body: some View {
         
         //Create the displayed View
-        DrawRandomWalk(points: walkPts)
+        DrawRandomWalk(walks: walkPts)
             .stroke(Color.red, lineWidth: 1)
             .frame(width: 600, height: 600)
             .background(Color.white)
@@ -33,7 +33,7 @@ struct RandomWalkView: View {
     ///
     struct DrawRandomWalk: Shape {
         
-        var points: CoordTupleList = []  ///Array of tuples
+        var walks: [CoordTupleList] = []  ///Array of tuples
         
         /// path
         ///
@@ -45,16 +45,20 @@ struct RandomWalkView: View {
             
             var path = Path()
             
-            if points.isEmpty {
-                return path
+            if walks.isEmpty {
+                return path // ensures that something is shown on screen
             }
             
-            // move to the initial position
-            path.move(to: CGPoint(x: points[0].x, y: points[0].y))
+            let scale = 1.0
             
-            // loop over all our points to draw create the paths
-            for item in 1..<(points.endIndex) {
-                path.addLine(to: CGPoint(x: points[item].x, y: points[item].y))
+            for walk in walks {
+                // move to the initial position
+                path.move(to: CGPoint(x: scale * walk[0].x, y: scale * walk[0].y))
+                
+                // loop over all our points to draw create the paths
+                for item in 1..<(walk.endIndex) {
+                    path.addLine(to: CGPoint(x: scale * walk[item].x, y: scale * walk[item].y))
+                }
             }
             
             return (path)
