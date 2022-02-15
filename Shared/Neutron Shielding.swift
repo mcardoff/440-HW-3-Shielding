@@ -32,7 +32,8 @@ class RandomWalk : NSObject, ObservableObject {
         }
         
         let ret = (paths: pathList, escapedCount: escapedCounter)
-        self.walks = pathList
+        print("Adding in \(pathList.count) things, \(walks.count) total")
+        self.walks.append(contentsOf: pathList)
         self.escapedCount = escapedCounter
         return ret
     }

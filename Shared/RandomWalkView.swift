@@ -16,7 +16,7 @@ struct RandomWalkView: View {
         
         //Create the displayed View
         DrawRandomWalk(walks: walkPts)
-            .stroke(Color.red, lineWidth: 1)
+            .stroke(Color.red, lineWidth: 3)
             .frame(width: 600, height: 600)
             .background(Color.white)
         
@@ -46,6 +46,7 @@ struct RandomWalkView: View {
             var path = Path()
             
             if walks.isEmpty {
+                print("Walks is empty! \(Date())")
                 return path // ensures that something is shown on screen
             }
             
@@ -57,10 +58,10 @@ struct RandomWalkView: View {
                 
                 // loop over all our points to draw create the paths
                 for item in 1..<(walk.endIndex) {
-                    path.addLine(to: CGPoint(x: scale * walk[item].x, y: scale * walk[item].y))
+//                    path.addLine(to: CGPoint(x: scale * walk[item].x, y: scale * walk[item].y))
+                    path.addLine(to: CGPoint(x: 100+item, y: 200+item))
                 }
             }
-            
             return (path)
         }
     }

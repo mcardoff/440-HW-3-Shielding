@@ -15,7 +15,7 @@ struct ContentView: View {
         VStack {
             Button("Calc Walks", action: self.calculate)
                 .padding()
-                .frame(width: 100.0)
+                .frame(width: 200.0)
                 .disabled(randomWalk.enableButton == false)
             
             HStack {
