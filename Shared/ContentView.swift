@@ -50,12 +50,12 @@ struct ContentView: View {
         let rw = randomWalk.nParticleRandomWalk(meanFP: 100.0, eLoss: 1.0, eMax: 10.0, n: 10)
         escaped = String(rw.escapedCount)
         print(String(format: "Num Escaped: %d\n", rw.escapedCount))
-        //        for walk in walks.paths {
-        //            for pt in walk {
-        //                print(String(format: "%f, %f\n",pt.x,pt.y))
-        //            }
-        //            print("------------------------\n")
-        //        }
+        for walk in rw.paths {
+            for pt in walk {
+                print(String(format: "%f, %f\n",pt.x,pt.y))
+            }
+            print("------------------------\n")
+        }
         randomWalk.setButtonEnable(state: true)
     }
     
