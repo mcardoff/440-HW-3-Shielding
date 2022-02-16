@@ -50,6 +50,8 @@ struct RandomWalkView: View {
                 return path // ensures that something is shown on screen
             }
             
+            
+            
             let scale = 1.0
             
             for walk in walks {
@@ -58,8 +60,8 @@ struct RandomWalkView: View {
                 
                 // loop over all our points to draw create the paths
                 for item in 1..<(walk.endIndex) {
-//                    path.addLine(to: CGPoint(x: scale * walk[item].x, y: scale * walk[item].y))
-                    path.addLine(to: CGPoint(x: 100+item, y: 200+item))
+                    path.addLine(to: CGPoint(x: scale * walk[item].x, y: scale * walk[item].y))
+//                    path.addLine(to: CGPoint(x: 100+item, y: 200+item))
                 }
             }
             return (path)

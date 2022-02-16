@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var randomWalk = RandomWalk()
+    @ObservedObject var randomWalk = RandomWalk()
     @State var escaped : String = "0"
     
     var body: some View {
@@ -47,7 +47,7 @@ struct ContentView: View {
         
         randomWalk.setButtonEnable(state: false)
         self.randomWalk.objectWillChange.send()
-        let rw = randomWalk.nParticleRandomWalk(meanFP: 100.0, eLoss: 1.0, eMax: 10.0, n: 10)
+        let rw = randomWalk.nParticleRandomWalk(meanFP: 10.0, eLoss: 0.50, eMax: 10.0, n: 100)
         escaped = String(rw.escapedCount)
         print(String(format: "Num Escaped: %d\n", rw.escapedCount))
         for walk in rw.paths {
