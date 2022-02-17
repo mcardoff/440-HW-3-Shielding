@@ -10,11 +10,63 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var randomWalk = RandomWalk()
+    @State var numParticleString : String = "1000"
+    @State var mfpString : String = "10.0"
+    @State var eLossString : String = "0.1"
+    @State var eMaxString : String = "10"
+    @State var boxHeightString : String = "600"
+    @State var boxWidthString : String = "600"
     @State var escaped : String = "0"
     
     var body: some View {
         HStack {
             VStack {
+                
+                VStack {
+                    Text("Number of Particles")
+                    TextField("", text: $numParticleString)
+                        .frame(width: 100.0)
+                }.padding()
+                
+                VStack {
+                    Text("Mean Free Path")
+                    TextField("Distance Travelled per step", text: $mfpString)
+                        .frame(width: 100.0)
+                }.padding()
+                
+                VStack {
+                    Text("% Energy Lost")
+                    TextField("Per MFP", text: $eLossString)
+                        .frame(width: 100.0)
+                }.padding()
+                
+                VStack {
+                    Text("Max Energy")
+                    TextField("Incoming energy", text: $eMaxString)
+                        .frame(width: 100.0)
+                }.padding()
+                
+                VStack {
+                    Text("Box Height")
+                    TextField("", text: $boxHeightString)
+                        .frame(width: 100.0)
+                }.padding()
+                
+                VStack {
+                    Text("Box Width")
+                    TextField("", text: $boxWidthString)
+                        .frame(width: 100.0)
+                }.padding()
+                
+                // should be last
+                VStack {
+                    Text("Number Escaped")
+                    TextField("Get Beyond the Box", text: $escaped)
+                        .frame(width: 100.0)
+                        .disabled(randomWalk.enableButton == false)
+                }.padding()
+                
+                // Buttons
                 Button("Calc Walks", action: self.calculate)
                     .padding()
                     .frame(width: 200.0)
@@ -23,39 +75,34 @@ struct ContentView: View {
                 Button("Clear", action: self.clear)
                     .padding()
                     .frame(width: 200.0)
-                
-                VStack {
-                    Text("Number Escaped")
-                    TextField("Get Beyond the Box", text: $escaped)
-                        .padding()
-                        .frame(width: 100.0)
-                        .disabled(randomWalk.enableButton == false)
-                }
             }
             
             // Drawing
-            //                if(randomWalk.hasBeenCalled) {
             RandomWalkView(walkPts: $randomWalk.walks)
                 .padding()
                 .aspectRatio(1, contentMode: .fit)
                 .drawingGroup()
-            //                }
         }
     }
     
     func calculate() {
         
         randomWalk.setButtonEnable(state: false)
+        
         self.randomWalk.objectWillChange.send()
-        let rw = randomWalk.nParticleRandomWalk(meanFP: 10.0, eLoss: 0.50, eMax: 10.0, n: 100)
-        escaped = String(rw.escapedCount)
-        print(String(format: "Num Escaped: %d\n", rw.escapedCount))
-        for walk in rw.paths {
-            for pt in walk {
-                print(String(format: "%f, %f\n",pt.x,pt.y))
-            }
-            print("------------------------\n")
-        }
+        
+        let rw = randomWalk.nParticleRandomWalk(
+            meanFP: Double(mfpString)!, eLoss: Double(eLossString)!, eMax: Double(eMaxString)!,
+            rightWall: Double(boxWidthString)!, upWall: Double(boxHeightString)!,
+            n: Int(numParticleString)!)
+        
+//        escaped = String(rw.escapedCount)
+//        for walk in rw.paths {
+//            for pt in walk {
+//                print(String(format: "%f, %f\n",pt.x,pt.y))
+//            }
+//            print("------------------------\n")
+//        }
         randomWalk.setButtonEnable(state: true)
     }
     

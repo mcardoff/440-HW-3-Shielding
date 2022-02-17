@@ -46,14 +46,14 @@ struct RandomWalkView: View {
             var path = Path()
             
             if walks.isEmpty {
-                print("Walks is empty! \(Date())")
+//                print("Walks is empty! \(Date())")
                 return path // ensures that something is shown on screen
             }
             
             
-            
             let scale = 1.0
             
+            // TODO SCALING
             for walk in walks {
                 // move to the initial position
                 path.move(to: CGPoint(x: scale * walk[0].x, y: scale * walk[0].y))
