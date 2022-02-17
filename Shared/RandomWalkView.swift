@@ -16,7 +16,7 @@ struct RandomWalkView: View {
         
         //Create the displayed View
         DrawRandomWalk(walks: walkPts)
-            .stroke(Color.red, lineWidth: 3)
+            .stroke(Color.red, lineWidth: 1)
             .frame(width: 600, height: 600)
             .background(Color.white)
         

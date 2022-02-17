@@ -11,8 +11,8 @@ struct ContentView: View {
     
     @ObservedObject var randomWalk = RandomWalk()
     @State var numParticleString : String = "1000"
-    @State var mfpString : String = "10.0"
-    @State var eLossString : String = "0.1"
+    @State var mfpString : String = "50.0"
+    @State var eLossString : String = "0.50"
     @State var eMaxString : String = "10"
     @State var boxHeightString : String = "600"
     @State var boxWidthString : String = "600"
@@ -96,7 +96,7 @@ struct ContentView: View {
             rightWall: Double(boxWidthString)!, upWall: Double(boxHeightString)!,
             n: Int(numParticleString)!)
         
-//        escaped = String(rw.escapedCount)
+        escaped = String(rw.escapedCount)
 //        for walk in rw.paths {
 //            for pt in walk {
 //                print(String(format: "%f, %f\n",pt.x,pt.y))

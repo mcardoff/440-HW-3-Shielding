@@ -79,7 +79,7 @@ class RandomWalk : NSObject, ObservableObject {
         
         // Single particle loop
         while (energy > 1.0e-5) {
-            let angle = Double.random(in: -0.5*Double.pi...0.5*Double.pi) // always move forward in x and y
+            let angle = Double.random(in: 0.0*Double.pi...2.0*Double.pi) // always move forward in x and y
             // Move forward a total distance of 1 mfp
             xCur += meanFP * cos(angle)
             yCur += meanFP * sin(angle)
