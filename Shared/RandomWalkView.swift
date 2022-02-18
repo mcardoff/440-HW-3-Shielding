@@ -24,12 +24,12 @@ struct RandomWalkView: View {
     
     
     
-    /// CesaroFractalShape
+    /// DrawRandomWalk
     ///
     /// calculates the Shape displayed in the Cesaro Fractal View
     ///
     /// - Parameters:
-    ///   - points: array of tuples containing the points of the walk to draw at
+    ///   - walks: array of array of tuples containing the points of the walk to draw at
     ///
     struct DrawRandomWalk: Shape {
         

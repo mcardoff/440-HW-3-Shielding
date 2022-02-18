@@ -142,6 +142,7 @@ class RandomWalk : NSObject, ObservableObject {
         return (path: points, escaped: escaped)
     }
     
+    // changes state of button internally
     func setButtonEnable(state: Bool) {
         if state {
             Task.init {
