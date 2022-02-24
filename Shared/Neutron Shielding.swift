@@ -84,7 +84,7 @@ class RandomWalk : NSObject, ObservableObject {
             xCur += meanFP * cos(angle)
             yCur += meanFP * sin(angle)
             
-            points.append((x:xCur, y:yCur))
+//            points.append((x:xCur, y:yCur))
             print(String(format: "%f: %f, %f\n",energy,xCur,yCur))
             
             if (xCur < LHW) { // back in reactor, we do not care
@@ -92,9 +92,13 @@ class RandomWalk : NSObject, ObservableObject {
                 break
             } else if (xCur > RHW || yCur > UPW || yCur < BTW) {
                 energy = 0
+                xCur = xCur > RHW ? RHW : xCur
+                yCur = yCur > UPW ? UPW : (yCur < BTW ? BTW : yCur)
+                points.append((x:xCur, y:yCur))
                 escaped = true
                 break
             } else {
+                points.append((x:xCur, y:yCur))
                 energy *= 1.0 - eLoss
             }
         }
