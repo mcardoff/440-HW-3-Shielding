@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var boxHeightString : String = "600"
     @State var boxWidthString : String = "600"
     @State var escaped : String = "0"
+    @State var box : [CoordTupleList] = [];
     
     var body: some View {
         HStack {
@@ -78,7 +79,7 @@ struct ContentView: View {
             }
             
             // Drawing
-            RandomWalkView(walkPts: $randomWalk.walks)
+            RandomWalkView(walkPts: $randomWalk.walks, boxPts: $box)
                 .padding()
                 .aspectRatio(1, contentMode: .fit)
                 .drawingGroup()
@@ -104,6 +105,12 @@ struct ContentView: View {
 //            print("------------------------\n")
 //        }
         randomWalk.setButtonEnable(state: true)
+        
+        box.append([(x: Double(boxWidthString)!, y: 0),
+               (x: Double(boxWidthString)!, y: Double(boxHeightString)!),
+               (x: 0, y: Double(boxHeightString)!),
+               (x: 0, y: 0),
+               (x: Double(boxWidthString)!, y:0)]);
     }
     
     func clear() {

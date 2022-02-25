@@ -11,15 +11,24 @@ import SwiftUI
 struct RandomWalkView: View {
     
     @Binding var walkPts : [CoordTupleList]
+    @Binding var boxPts : [CoordTupleList]
 
     var body: some View {
         
-        //Create the displayed View
-        DrawRandomWalk(walks: walkPts)
-            .stroke(Color.red, lineWidth: 1)
-            .frame(width: 600, height: 600)
-            .background(Color.white)
         
+        ZStack {
+            // walks
+            DrawRandomWalk(walks: walkPts)
+                .stroke(Color.red, lineWidth: 1)
+                .frame(width: 600, height: 600)
+                .background(Color.white)
+            
+            // box
+            DrawRandomWalk(walks: boxPts)
+                .stroke(Color.black, lineWidth: 2)
+                .frame(width: 600, height: 600)
+                .background(Color.white)
+        }
     }
     
     
@@ -41,19 +50,16 @@ struct RandomWalkView: View {
         /// - Returns: path for the Shape
         ///
         func path(in rect: CGRect) -> Path {
+            
             // Create the Path for the Cesaro Fractal
             
             var path = Path()
             
             if walks.isEmpty {
-//                print("Walks is empty! \(Date())")
                 return path // ensures that something is shown on screen
             }
             
-            
             let scale = 1.0
-            
-            // TODO SCALING
             for walk in walks {
                 // move to the initial position
                 path.move(to: CGPoint(x: scale * walk[0].x, y: scale * walk[0].y))
