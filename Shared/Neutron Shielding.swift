@@ -54,7 +54,7 @@ class RandomWalk : NSObject, ObservableObject {
         }
         
         let ret = (paths: pathList, escapedCount: escapedCounter)
-        print("Adding in \(pathList.count) things, \(walks.count) total")
+//        print("Adding in \(pathList.count) things, \(walks.count) total")
         self.walks.append(contentsOf: pathList)
         self.escapedCount = escapedCounter
         return ret
@@ -85,7 +85,7 @@ class RandomWalk : NSObject, ObservableObject {
             yCur += meanFP * sin(angle)
             
 //            points.append((x:xCur, y:yCur))
-            print(String(format: "%f: %f, %f\n",energy,xCur,yCur))
+//            print(String(format: "%f: %f, %f\n",energy,xCur,yCur))
             
             if (xCur < LHW) { // back in reactor, we do not care
                 energy = 0
@@ -102,7 +102,7 @@ class RandomWalk : NSObject, ObservableObject {
                 energy *= 1.0 - eLoss
             }
         }
-        print("------------------------\n")
+//        print("------------------------\n")
         return (path: points, escaped: escaped)
     }
     
