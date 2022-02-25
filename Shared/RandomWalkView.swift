@@ -27,7 +27,6 @@ struct RandomWalkView: View {
             DrawRandomWalk(walks: boxPts)
                 .stroke(Color.black, lineWidth: 2)
                 .frame(width: 600, height: 600)
-                .background(Color.white)
         }
     }
     
